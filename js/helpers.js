@@ -8,3 +8,27 @@ const doesUrlContainString = (searchString) => {
 const createDomMutationObserver = (node, callback) => { 
     (new MutationObserver(callback)).observe(node, { childList: true })
 }
+
+const reorderBoxes = () => {
+    convertHalfBoxesIntoTallThirdsBoxes()
+    convertSmallBoxesIntoTallThirdsBoxes()
+}
+
+const convertHalfBoxesIntoTallThirdsBoxes = (halfBoxes) => {
+}
+
+const convertSmallBoxesIntoTallThirdsBoxes = () => {
+    document.querySelectorAll('.u-size4of12 > .u-height260').forEach(box => {
+        //changes box size itself
+        box.classList.remove('u-height260')
+        box.classList.add('u-height540')
+
+        // changes cover image size
+        box.firstElementChild.classList.remove('u-height100')
+        box.firstElementChild.classList.add('u-height280')
+
+        // changes content preview box size
+        box.lastElementChild.classList.remove('u-height160')
+        box.lastElementChild.classList.add('u-height260')
+    })
+}
