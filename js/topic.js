@@ -1,5 +1,3 @@
-
-
 if (doesUrlContainString(`https://medium.com/topic`)) {
     const streamItems = document.querySelectorAll('.streamItem');
     streamItems.forEach((streamItem, index) => {
@@ -27,7 +25,7 @@ if (doesUrlContainString(`https://medium.com/topic`)) {
                 const content = lastStreamItemAdded.querySelector('section').innerHTML
 
                 streamItems.item(0).querySelector('section').innerHTML += content
-                //reorderBoxes()
+                reorderBoxes()
                 lastStreamItemAdded.parentNode.removeChild(lastStreamItemAdded)
             }
         }

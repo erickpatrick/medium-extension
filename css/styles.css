@@ -54,3 +54,24 @@
 .extremeAdaptiveSection ol {
   display: none !important;
 }
+
+section > div.u-borderBox {
+  width: calc(100%/3) !important;
+  height: 560px !important;
+}
+
+section > div.u-borderBox:nth-child(3n+2) {
+  padding: 0 10px 0 0 !important;
+}
+
+section > div.u-borderBox:nth-child(3n) {
+  padding: 0 10px 0 !important;
+}
+
+section > div.u-borderBox:nth-child(3n+1) {
+  padding: 0 0 0 10px !important;
+}
+
+section > div.u-borderBox > .u-flex.u-sizeFullWidth {
+  height: 538px !important;
+}
