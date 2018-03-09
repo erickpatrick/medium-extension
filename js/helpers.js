@@ -1,12 +1,21 @@
 const MAKE_IT_SHINE_CLASS = 'make-it-shine'
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+const LAST_EVENT_TARGET_CLASS_NAME = 'buttonSet buttonSet--wide'
+
+const splitCurrentUrl = () => window.location.href.split('/').filter(item => !!item)
+
+const isHomePage = () => splitCurrentUrl().length === 2
 
 const doesUrlContainString = (searchString) => {
-    return window.location.href.split(searchString).filter(item => item.trim() === '').length > 0
+    return splitCurrentUrl().includes(searchString)
 }
 
-const createDomMutationObserver = (node, callback) => { 
-    (new MutationObserver(callback)).observe(node, { childList: true })
+const createDomMutationObserver = (node, callback, extraConfig = {}) => { 
+    (new MutationObserver(callback)).observe(node, { childList: true, ...extraConfig })
+}
+
+const addClassToElement = (element, className) => {
+    element.classList.add(className)
 }
 
 const reorderBoxes = () => {
@@ -31,4 +40,15 @@ const convertSmallBoxesIntoTallThirdsBoxes = () => {
         box.lastElementChild.classList.remove('u-height160')
         box.lastElementChild.classList.add('u-height260')
     })
+}
+
+const adjustPage = () => {
+  isHomePage() && window.dispatchEvent(new CustomEvent(`mext--home-event`))
+  doesUrlContainString(`topic`) && window.dispatchEvent(new CustomEvent(`mext--topic-event`))
+}
+
+const filterTargetEvent = mutation => mutation.target.className === LAST_EVENT_TARGET_CLASS_NAME
+
+const adjustPageAfterLastChange = (mutationList) => {
+  mutationList.filter(filterTargetEvent).length && adjustPage()
 }
