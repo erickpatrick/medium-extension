@@ -1,17 +1,31 @@
 window.addEventListener('mext--topic-event', () => {
     if (doesUrlContainString('topic')) {
         addClassToElement(document.querySelector('body'), 'mext--topic')
+        convertSmallBoxesIntoTallThirdsBoxes()
 
+        // home small links from within content
+        document.querySelectorAll('.streamItem--topicDiveDeeper').forEach(item => item.remove())
+
+        let content = ''
         const streamItems = document.querySelectorAll('.streamItem');
         streamItems.forEach((streamItem, index) => {
-            if (index > 0) {
-                streamItems.item(index).querySelector('section').innerHTML += streamItem.querySelector('section').innerHTML
-                streamItems.item(index).parentNode.removeChild(streamItem)
+            streamItem.querySelectorAll('section > header').forEach(header => header.remove())
+            streamItem.querySelectorAll('section > div').forEach(item => item.classList.add('u-size4of12'))
+
+            // protect against hidden/duplicated from being displayed
+            const localContent = streamItem.querySelector('section').innerHTML
+            if (content.indexOf(localContent) === -1) {
+                content += streamItem.querySelector('section').innerHTML
             }
+            index && streamItem.querySelector('section').remove()
         })
+        streamItems.item(0).querySelector('section').innerHTML = content
+
+        // removes any header in order to properly use `:nth-child` in CSS
+        const topicStream = document.querySelector('.js-topicStream')
 
         createDomMutationObserver(
-            document.querySelector('.js-topicStream'),
+            topicStream,
             () => {
                 // paint member only items in gold to not remove them and adjust the grid
                 const featuredForMemberItems = document.querySelectorAll('.svgIcon--star')
