@@ -66,24 +66,28 @@
 
 
 /* topic */
-
 .mext--topic section > div.u-borderBox {
   width: calc(100%/3) !important;
-  height: 560px !important;
 }
 
-.mext--topic section > div.u-borderBox:nth-child(3n+2) {
-  padding: 0 10px 0 0 !important;
+.mext--topic section > div.u-borderBox,
+.mext--topic section > div.u-borderBox > div.u-borderBox,
+.mext--topic section > div.u-borderBox > .u-flex.u-sizeFullWidth {
+  height: 538px !important;
 }
 
-.mext--topic section > div.u-borderBox:nth-child(3n) {
-  padding: 0 10px 0 !important;
+.mext--topic section > div.u-borderBox {
+    margin-bottom: 20px !important;
 }
 
 .mext--topic section > div.u-borderBox:nth-child(3n+1) {
-  padding: 0 0 0 10px !important;
+  padding: 0 10px 0 0 !important;
 }
 
-.mext--topic section > div.u-borderBox > .u-flex.u-sizeFullWidth {
-  height: 538px !important;
+.mext--topic section > div.u-borderBox:nth-child(3n+2) {
+  padding: 0 10px 0 !important;
+}
+
+.mext--topic section > div.u-borderBox:nth-child(3n) {
+  padding: 0 0 0 10px !important;
 }
