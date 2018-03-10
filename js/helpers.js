@@ -1,5 +1,6 @@
 const MAKE_IT_SHINE_CLASS = 'make-it-shine'
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+const EXTENSION_CSS_CLASSES = ['mext--home', 'mext--topic']
 const LAST_EVENT_TARGET_CLASS_NAME = 'buttonSet buttonSet--wide'
 
 const splitCurrentUrl = () => window.location.href.split('/').filter(item => !!item)
@@ -42,9 +43,23 @@ const convertSmallBoxesIntoTallThirdsBoxes = () => {
     })
 }
 
+const removeExtensionClasses = () => {
+    const body = document.querySelector('body')
+    EXTENSION_CSS_CLASSES.forEach(extensionClass => {
+        body.classList.contains(extensionClass) && body.classList.remove(extensionClass)
+    })
+}
+
 const adjustPage = () => {
-  isHomePage() && window.dispatchEvent(new CustomEvent(`mext--home-event`))
-  doesUrlContainString(`topic`) && window.dispatchEvent(new CustomEvent(`mext--topic-event`))
+    removeExtensionClasses()
+
+    if (isHomePage()) {
+        window.dispatchEvent(new CustomEvent(`mext--home-event`))
+    }
+
+    if (doesUrlContainString(`topic`)) {
+        window.dispatchEvent(new CustomEvent(`mext--topic-event`))
+    }
 }
 
 const filterTargetEvent = mutation => mutation.target.className === LAST_EVENT_TARGET_CLASS_NAME
