@@ -8,58 +8,58 @@ const splitCurrentUrl = () => window.location.href.split('/').filter(item => !!i
 const isHomePage = () => splitCurrentUrl().length === 2
 
 const doesUrlContainString = (searchString) => {
-    return splitCurrentUrl().includes(searchString)
+  return splitCurrentUrl().includes(searchString)
 }
 
-const createDomMutationObserver = (node, callback, extraConfig = {}) => { 
-    (new MutationObserver(callback)).observe(node, { childList: true, ...extraConfig })
+const createDomMutationObserver = (node, callback, extraConfig = {}) => {
+  (new MutationObserver(callback)).observe(node, {childList: true, ...extraConfig})
 }
 
 const addClassToElement = (element, className) => {
-    element.classList.add(className)
+  element.classList.add(className)
 }
 
 const reorderBoxes = () => {
-    convertHalfBoxesIntoTallThirdsBoxes()
-    convertSmallBoxesIntoTallThirdsBoxes()
+  convertHalfBoxesIntoTallThirdsBoxes()
+  convertSmallBoxesIntoTallThirdsBoxes()
 }
 
 const convertHalfBoxesIntoTallThirdsBoxes = (halfBoxes) => {
 }
 
 const convertSmallBoxesIntoTallThirdsBoxes = () => {
-    document.querySelectorAll('.u-size4of12 > .u-height260').forEach(box => {
-        //changes box size itself
-        box.classList.remove('u-height260')
-        box.classList.add('u-height540')
+  document.querySelectorAll('.u-size4of12 > .u-height260').forEach(box => {
+    //changes box size itself
+    box.classList.remove('u-height260')
+    box.classList.add('u-height540')
 
-        // changes cover image size
-        box.firstElementChild.classList.remove('u-height100')
-        box.firstElementChild.classList.add('u-height280')
+    // changes cover image size
+    box.firstElementChild.classList.remove('u-height100')
+    box.firstElementChild.classList.add('u-height280')
 
-        // changes content preview box size
-        box.lastElementChild.classList.remove('u-height160')
-        box.lastElementChild.classList.add('u-height260')
-    })
+    // changes content preview box size
+    box.lastElementChild.classList.remove('u-height160')
+    box.lastElementChild.classList.add('u-height260')
+  })
 }
 
 const removeExtensionClasses = () => {
-    const body = document.querySelector('body')
-    EXTENSION_CSS_CLASSES.forEach(extensionClass => {
-        body.classList.contains(extensionClass) && body.classList.remove(extensionClass)
-    })
+  const body = document.querySelector('body')
+  EXTENSION_CSS_CLASSES.forEach(extensionClass => {
+    body.classList.contains(extensionClass) && body.classList.remove(extensionClass)
+  })
 }
 
 const adjustPage = () => {
-    removeExtensionClasses()
+  removeExtensionClasses()
 
-    if (isHomePage()) {
-        window.dispatchEvent(new CustomEvent(`mext--home-event`))
-    }
+  if (isHomePage()) {
+    window.dispatchEvent(new CustomEvent(`mext--home-event`))
+  }
 
-    if (doesUrlContainString(`topic`)) {
-        window.dispatchEvent(new CustomEvent(`mext--topic-event`))
-    }
+  if (doesUrlContainString(`topic`)) {
+    window.dispatchEvent(new CustomEvent(`mext--topic-event`))
+  }
 }
 
 const filterTargetEvent = mutation => mutation.target.className === LAST_EVENT_TARGET_CLASS_NAME
