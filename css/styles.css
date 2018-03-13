@@ -1,8 +1,4 @@
-.js-homeStream,
-.promo-home_hero_conversion {
-  display: none;
-}
-
+/* general */
 .u-sizeFullWidth.u-xs-heightAuto.u-borderBox.make-it-shine {
   transition-property: all;
   transition-duration: 0.5s;
@@ -29,28 +25,77 @@
   width: 100% !important;
 }
 
-.extremeSidebar {
+.extremePopchunk {
+  margin: 48px 0 48px 0 !important;
+}
+
+
+/* home */
+.mext--home .js-homeStream,
+.mext--home .promo-home_hero_conversion {
+  display: none;
+}
+
+.mext--home .extremeSidebar {
   width: 100% !important;
   overflow: hidden;
 }
 
-.extremeSidebar .streamItem,
-.streamItem aside,
-.streamItem .extremeAdaptiveSection-imageHeader {
+.mext--home .extremeSidebar .streamItem,
+.mext--home .streamItem aside,
+.mext--home .streamItem .extremeAdaptiveSection-imageHeader {
   height: 135px;
 }
 
-.extremeSidebar .streamItem {
+.mext--home .extremeSidebar .streamItem {
   margin-bottom: 0;
   padding-bottom: 0;
+  display: none;
   float:left;
   width: 50%;
 }
 
-.extremeSidebar .streamItem:nth-child(2) {
+.mext--home .extremeSidebar .streamItem:first-child,
+.mext--home .extremeSidebar .streamItem:last-child {
+  display: block !important;
+}
+
+.mext--home .extremeSidebar .extremeAdaptiveSection ol {
   display: none !important;
 }
 
-.extremeAdaptiveSection ol {
-  display: none !important;
+
+/* topic */
+.mext--topic section > div.u-borderBox,
+.js-sourceStream section > div.u-borderBox{
+  width: calc(100%/3) !important;
+}
+
+.mext--topic section > div.u-borderBox,
+.mext--topic section > div.u-borderBox > div.u-borderBox,
+.mext--topic section > div.u-borderBox > .u-flex.u-sizeFullWidth,
+.js-sourceStream section > div.u-borderBox,
+.js-sourceStream section > div.u-borderBox > div.u-borderBox,
+.js-sourceStream section > div.u-borderBox > .u-flex.u-sizeFullWidth{
+  height: 538px !important;
+}
+
+.mext--topic section > div.u-borderBox,
+.js-sourceStream section > div.u-borderBox {
+    margin-bottom: 20px !important;
+}
+
+.mext--topic section > div.u-borderBox:nth-child(3n+1),
+.js-sourceStream section > div.u-borderBox:nth-child(3n+1) {
+  padding: 0 10px 0 0 !important;
+}
+
+.mext--topic section > div.u-borderBox:nth-child(3n+2),
+.js-sourceStream section > div.u-borderBox:nth-child(3n+2) {
+  padding: 0 10px 0 !important;
+}
+
+.mext--topic section > div.u-borderBox:nth-child(3n),
+.js-sourceStream section > div.u-borderBox:nth-child(3n) {
+  padding: 0 0 0 10px !important;
 }
