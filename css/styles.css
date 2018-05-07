@@ -1,11 +1,19 @@
 /* general */
-.u-backgroundColorWhite.make-it-shine {
+.u-backgroundColorWhite.make-it-shine,
+.extremePostPreview.make-it-shine,
+.extremeHero-post.make-it-shine {
   transition-property: all;
   transition-duration: 0.5s;
   background-color: gold !important;
   opacity: 0.1;
 }
 
-.u-backgroundColorWhite.make-it-shine:hover {
+.u-backgroundColorWhite.make-it-shine:hover,
+.extremePostPreview.make-it-shine:hover,
+.extremeHero-post.make-it-shine:hover {
   opacity: 1
+}
+
+.extremePostPreview.make-it-shine {
+  padding: 10px;
 }
