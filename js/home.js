@@ -17,8 +17,10 @@ createDomMutationObserver(
     featuredForMemberItems.forEach(item => {
       if (item.closest('.extremePostPreview')) {
         makeItShine(item, '.extremePostPreview')
-      } else if(item.closest('.extremeHero-post')) {
+      } else if (item.closest('.extremeHero-post')) {
         makeItShine(item, '.extremeHero-post')
+      } else if (item.closest('.js-trackedPost')) {
+        makeItShine(item, '.js-trackedPost')
       } else {
         makeItShine(item, '.u-backgroundColorWhite')
       }
