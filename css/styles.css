@@ -21,5 +21,9 @@
 }
 
 .streamItem--sequenceIndexCarousel {
-	display: none;
+  display: none;
+}
+
+.butterBar-message {
+  display: none;
 }
